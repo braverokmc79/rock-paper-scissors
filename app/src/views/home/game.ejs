@@ -1,0 +1,30 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> 가위 바위 보</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <button type="button" onclick="location.href='/' "> 메인페이지로 돌아가기 </button>
+    <% if(typeof user != 'undefined'){%>
+          <%=user.body.user_id %> 님 환영 합니다.
+          <a href="/logout">로그아웃</a>
+    <% }else{ %>
+        <a href="/login">로그인</a>
+    <% } %>
+    <h1> 가위 바위 보   </h1>
+
+
+
+ 
+    <button type="button" onclick="location.href='/game/rock' "> 바위 </button>&nbsp&nbsp&nbsp&nbsp
+    <button type="button" onclick="location.href='/game/paper' "> 보  </button>&nbsp&nbsp&nbsp&nbsp
+    <button type="button" onclick="location.href='/game/scissors ' "> 가위 </button>&nbsp&nbsp&nbsp&nbsp
+  
+  
+    
+
+  </body>
+</html>

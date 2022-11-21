@@ -1,0 +1,29 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> 결과 화면 </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    
+    <button type="button" onclick="location.href='/' "> 메인페이지로 돌아가기 </button>
+
+    <h1><%= user_id %> 님의 게임기록 </h1>  
+
+    <br>
+    <p>
+    총  <%= myVictory.game_count %>회 ,
+    win : <%= myVictory.win %>  ,  lose : <%= myVictory.lose %>  , draw: : <%= myVictory.draw %>
+
+    </p>
+    
+    
+    <br>
+
+    <% for(var value of result) { %>
+      <p>  <%= JSON.stringify(value) %> </p>
+    <% } %>
+
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> 랭킹 화면 </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <button type="button" onclick="location.href='/' "> 메인페이지로 돌아가기 </button>
+    <h1> 전체 랭킹 </h1>  
+
+    <br>
+
+    <% for(var value of result) { %>
+      <p>  <%= JSON.stringify(value) %> </p>
+    <% } %>
+    
+  </body>
+</html>

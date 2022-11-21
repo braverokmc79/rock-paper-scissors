@@ -1,0 +1,17 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> 결과 화면 </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <button type="button" onclick="location.href='/' "> 메인페이지로 돌아가기 </button>
+    <h1> <%= result %> </h1>
+    <h1> 나 : <%= my_hand %> </h1>
+    <h1> 상대방 : <%= enemy_hand %> </h1>
+
+    <button type="button" onclick="location.href='/game/game' "> 다시하기  </button>
+  </body>
+</html>

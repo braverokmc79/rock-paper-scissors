@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="/css/home/style.css">
+    <title><%= title_text %></title>   
+</head>
+<body>
+    여기는 루트 입니다.
+
+<% if(typeof user != 'undefined'){%>
+ <%=user.body.user_id %> 님 환영 합니다.
+ <a href="/logout">로그아웃</a>
+<% } %>
+
+
+
+
+    <h1><%= title_text %></h1>
+    <p>Welcome to <%= title_welcome %></p>
+
+    <button type="button" onclick="location.href='/users/join' "> 회원가입 </button>
+    <br><br>
+    <button type="button" onclick="location.href='/users/login ' "> 로그인 </button>
+    <br><br>
+    <button type="button" onclick="location.href='/game/game' "> 게임 플레이 </button>
+    <button type="button" onclick="location.href='/game/game-history' "> 개인 기록  </button>
+    <button type="button" onclick="location.href='/game/game-ranking' "> 게임 랭킹  </button>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
