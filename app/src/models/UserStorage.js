@@ -55,7 +55,12 @@ class UserStorage {
     static async gameRanking() {
 
         return new Promise((resolove, rejects) => {
-            const query = ` SELECT user_id, win,  lose , draw, game_count  FROM user_info `;
+            const query = ` 	Select * 
+	FROM (
+		  select  rank() over (order by win desc) as 'ranking'  , user_id, win , lose ,  draw,  game_count
+		from user_info 
+	    ) ranked
+	where ranked.ranking  < 1000000000000 `;
             db.query(query, [], function (err, data) {
                 if (err) return rejects(`${err}`);
                 resolove(data.length === 0 ? false : data);

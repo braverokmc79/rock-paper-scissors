@@ -27,8 +27,7 @@ const output = {
     logout: (req, res) => {
         req.session.destroy(function (err) {
             if (err) throw err;
-            console.log('세션 삭제하고 로그아웃됨');
-            res.render("home/index");
+            res.redirect("/");
         });
     },
 
@@ -98,7 +97,12 @@ const output = {
         }
 
         const user = new User(req.body);
-        const result = await user.gameRanking();
+        let result = await user.gameRanking();
+
+        result = result.map(item => {
+            return { ...item, ranking: item.ranking + " 위" }
+        });
+
         console.log("랭킹  : ", result);
 
         const data = { result: result }
