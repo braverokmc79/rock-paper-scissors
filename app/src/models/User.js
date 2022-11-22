@@ -9,9 +9,7 @@ class User {
     async login() {
         try {
             const client = this.body;
-            console.log(" login  :", client);
             const { user_id, psword } = await UserStorage.getUserInfo(client.user_id);
-
             if (user_id) {
                 if (user_id === client.user_id && psword === client.psword) {
                     return { success: true };
@@ -21,8 +19,6 @@ class User {
             return { success: false, msg: "존재하지 않는 아이디 입니다." };
 
         } catch (err) {
-
-
             return { success: false, err }
         }
 

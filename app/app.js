@@ -39,7 +39,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
-
 app.use("/", home); //use ->미들웨어를 등록해 주는 메소드.
 
 

@@ -6,14 +6,12 @@ const logger = require("../../config/logger");
 const output = {
     home: (req, res) => {
         logger(null, req, res);
-        console.log(" 로그인 정보 : ", req.session.user);
         res.render("home/index", { user: req.session.user, title_text: 'express!', title_welcome: '웰컴!' });
     },
 
     //로그인 
     login: (req, res) => {
         logger(null, req, res);
-
         res.render("home/login");
     },
 
@@ -34,7 +32,6 @@ const output = {
     //게임 화면
     game: (req, res) => {
         logger(null, req, res);
-        console.log("게임 history  ");
         if (req.session.user == undefined) {
             res.render("home/login");
             return;
@@ -45,7 +42,6 @@ const output = {
     //게임 - 바위
     gameRock: async (req, res) => {
         logger(null, req, res);
-        console.log("게임 history  ");
         if (req.session.user == undefined) {
             res.render("home/login");
             return;
@@ -74,7 +70,6 @@ const output = {
     //게임 - 가위
     gameScissors: async (req, res) => {
         logger(null, req, res);
-        console.log("게임 history  ");
         if (req.session.user == undefined) {
             res.render("home/login");
             return;
@@ -90,7 +85,6 @@ const output = {
     //랭킹
     gameRanking: async (req, res) => {
         logger(null, req, res);
-        console.log("게임 history  ");
         if (req.session.user == undefined) {
             res.render("home/login");
             return;
@@ -103,8 +97,6 @@ const output = {
             return { ...item, ranking: item.ranking + " 위" }
         });
 
-        console.log("랭킹  : ", result);
-
         const data = { result: result }
         res.render("home/game-ranking", data);
     },
@@ -113,7 +105,6 @@ const output = {
     //게임 history
     gameHistory: async (req, res) => {
         logger(null, req, res);
-        console.log("게임 history  ");
         if (req.session.user == undefined) {
             res.render("home/login");
             return;
@@ -131,7 +122,6 @@ const output = {
         }
 
         console.log(" 게임 history :", data);
-
         res.render("home/game-history", data);
     },
 
@@ -154,9 +144,6 @@ const process = {
         const response = await user.register();
         logger(response, req, res);
     },
-
-
-
 
     _gameProcessing: async (req, res, param) => {
         const score = {
@@ -211,13 +198,8 @@ const process = {
             user_id: req.session.user.body.user_id
         }
 
-        console.log("업데이트 할 데이터 : ", data);
-
         const user = new User(req.body);
         const response = await user.gameSave(data);
-
-
-        console.log("DB response : ", response);
 
         const resData = {
             result: result,
@@ -225,6 +207,8 @@ const process = {
             enemy_hand: enemy_hand
         }
 
+        console.log("업데이트 할 데이터 : ", data);
+        console.log("DB response : ", response);
         console.log("반환 할 데이터 : ", resData);
 
         return resData;
